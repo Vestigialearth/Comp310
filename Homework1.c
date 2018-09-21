@@ -1,45 +1,25 @@
-//This is the beginning of my code:
 
 #include <string.h>
 #include <stdlib.h>
 #include <stdio.h>
 #include <ctype.h>
 
-int main(int argc, char const *argv[])
-{
-const char specialChars[] = "!@#$%^&*()_+"':;?/>.<,|\";
+char *ReadWords = 0;
+int *OccurenceInt = 0;
+char *myFile = 0;
+const char specialChars[] = "!@#$%^&*()_+/><|";
+int CountOccurrences = 0;
 //This is the list of special characters I want to remove from the program
 
-char *wordsFromFile[1000]; 
-//The assignment does require up to an infinite number of words to be processed, however this number
-//can be changed for files with an excess of 1000 words
 
-int counterForWords = ReadWords("words.txt", wordsFromFile, 10000);
-// This will sift through the file and store the words into the list
-    
-for (int numOfWord = 0; numOfWord < counterForWords; numOfWord++)
-//This increments the value of i, which is responsible for containing the occurences of a specific word
-
-    {
-    int OccurenceInt = CountOccurrences(words[numOfWord],FILE *f = fopen(filename, "rt");
-    printf("we found the word %s in the file %d times\n", wordsFromFile[numOfWord], OccurenceInt);
-    }
-
-removeSpecialChars(myFile, specialChars);
-fprintf(stderr, "'%s'\n", specialChars);
-return 0;
-}
-
-void removeSpecialChars(char *sentence, const char *word) 
+void removeSpecialChars(char *myChar, const char *word) 
 {
     char *myChar;
     size_t stringLength = strlen(myFile);
     size_t wordLength = strlen(specialChars);
     int containsWord = 1; // to store words to fix later
-
     if(stringLength < wordLength ) 
         return;
-
     for(myChar = myFile;  myChar && *myChar!='\0'; myChar++) 
     {
         if(isspace(*myChar) || ispunct(*myChar)) {
@@ -47,7 +27,7 @@ void removeSpecialChars(char *sentence, const char *word)
             continue;
     }
 
-int ReadWords(const char *filename, char *wordsFromFile[], int wordMax)
+int ReadWords(const char *(fopen(myFile, "rt")), char *wordsFromFile[], int wordMax)
 {
     FILE *f = fopen(filename, "rt");
     int numOfWord;
@@ -61,12 +41,36 @@ int ReadWords(const char *filename, char *wordsFromFile[], int wordMax)
             break;
 
      // Allocate memory
-        words[numOfWord] = strdup(temp);
+        wordsFromFile[numOfWord] = strdup(temp);
     }
-    fclose(myFile);
+    //fclose(myFile);
 
     // The result of this function is the number of words in the file
     return numOfWord;
+}
+
+int main(int argc, char const *argv[])
+{
+
+//const char specialChars[] = "!@#$%^&*()_+/><|";
+
+char *wordsFromFile[1000]; 
+//The assignment does require up to an infinite number of words to be processed, however this number
+//can be changed for files with an excess of 1000 words
+int counterForWords = ReadWords((fopen(myFile, "rt"), wordsFromFile, 10000);
+// This will sift through the file and store the words into the list
+    
+for (int numOfWord = 0; numOfWord < counterForWords; numOfWord++);
+//This increments the value of i, which is responsible for containing the occurences of a specific word
+    {
+    int OccurenceInt = CountOccurrences*(wordsFromFile[numOfWord],(fopen(myFile, "rt")) != NULL));
+    printf("we found the word %s in the file %d times\n", wordsFromFile[numOfWord], OccurenceInt);
+    }
+removeSpecialChars(myFile, specialChars);
+fprintf(stderr, "'%s'\n", specialChars);
+return 0;
+
+}
 }
 
 // --LINKS I TOOK CODE FROM / WAS DIRECTLY INSPIRED BY--
