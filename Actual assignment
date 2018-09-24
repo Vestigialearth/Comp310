@@ -2,6 +2,19 @@
 #include <string.h>
 #include <stdlib.h>
 
+typedef struct {
+	char word[10000];
+	int rate;
+  
+   } arrayStorage ;
+
+arrayStorage words[10000];
+
+int wordComparison(const void *x1, const void *x2){
+	arrayStorage *i = (arrayStorage *)x1;
+	arrayStorage *j = (arrayStorage *)x2;
+	return (j->rate - i->rate);
+    }
 
 char *wordFrequencyCounter(char *file){
   int wordCounter = 0;
