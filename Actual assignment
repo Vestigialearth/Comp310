@@ -1,12 +1,29 @@
 #include <stdio.h>
+#include <fcntl.h>
 #include <string.h>
 #include <stdlib.h>
 
-typedef struct {
+
+int main(int argc, char *argv[])
+{
+
+
+
+//DECLARE VARS
+//CHECK FOR CORRECT FILENAME
+//FORK CHILD TO ARG
+//SEND FILE'S 5 WORDS TO PARENT
+//PRINT PARENT
+
+
+
+}
+typedef struct 
+{
 	char word[10000];
 	int rate;
   
-   } arrayStorage ;
+} arrayStorage ;
 
 arrayStorage words[10000];
 
@@ -17,10 +34,10 @@ int wordComparison(const void *x1, const void *x2){
     }
 
 char *wordFrequencyCounter(char *file){
-  int wordCounter = 0;
-  int uniqueCounter;
-  char wordBuffer[10000]
-  FILE *filename;
+  	int wordCounter = 0;
+	int uniqueCounter;
+ 	char wordBuffer[10000]
+  	FILE *filename;
   
   filename = fopen(file, "r");
   
@@ -66,17 +83,7 @@ fclose(filename);
 	return finalVar;
 }
 
-int main(int argc, char *argv[])
-{
 
-
-
-
-
-
-
-
-}
 
 
 
