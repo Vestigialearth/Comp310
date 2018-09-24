@@ -1,0 +1,36 @@
+#include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
+
+
+char *wordFrequencyCounter(char *file){
+  int wordCounter = 0;
+  int uniqueCounter;
+  char wordBuffer[100000]
+  FILE *filename;
+  
+  filename = fopen(file, "r");
+  
+  if (filename == NULL)
+    {
+    printf("It appears that the file couldn't be opened");
+    }
+  else
+    {
+      while((fscanf(filename,%s",buffer)))
+    { INSERT WORDS TO ARRAY, COUNT NON UNIQUE WORDS
+    //just going to use this while loop to simply increment using "++"
+    }
+    }
+
+
+
+
+
+
+
+
+
+
+
+}
