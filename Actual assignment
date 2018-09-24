@@ -19,7 +19,7 @@ int wordComparison(const void *x1, const void *x2){
 char *wordFrequencyCounter(char *file){
   int wordCounter = 0;
   int uniqueCounter;
-  char wordBuffer[100000]
+  char wordBuffer[10000]
   FILE *filename;
   
   filename = fopen(file, "r");
@@ -31,11 +31,30 @@ char *wordFrequencyCounter(char *file){
   else
     {
       while((fscanf(filename,%s",buffer)))
-    { INSERT WORDS TO ARRAY, COUNT NON UNIQUE WORDS
-    //just going to use this while loop to simply increment using "++"
-    }
-    }
+    { isUnique = -1;
 
+//this compares strings
+int k;
+			
+for (z = 0; z < counter; z++){
+	if (strcmp(words[z].word, buffer) == 0)
+{
+	uniqueCounter = z;
+}
+}
+// If word is not already in array, place it there.
+if (uniqueCounter == -1)
+{
+	strcpy(words[myCount].word, buffer);
+	words[myCount].rate = 1;
+	myCount++;
+}
+	// Increases rate var of word if it is found 
+	else {
+	words[uniqueCounter].rate++;
+	     }	
+}
+}	
 
 
 
