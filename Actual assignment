@@ -34,7 +34,7 @@ char *wordFrequencyCounter(char *file){
     { isUnique = -1;
 
 //this compares strings
-int k;
+int z;
 			
 for (z = 0; z < counter; z++){
 	if (strcmp(words[z].word, buffer) == 0)
@@ -55,9 +55,28 @@ if (uniqueCounter == -1)
 	     }	
 }
 }	
+}
+//uses Qsort to take words out that appear the most frequently
+	qsort(words, myCount, sizeof(arrayStorage), wordComparison);
+
+char *finalVar = (char*)malloc(sizeof(finalVar)*100);
+snprintf(result, 10000, "%s %d %s %s %s %s %s", file, myCount, words[0].word, words[1].word, words[2].word, words[3].word , words[4].word);
+fclose(filename);
+//this should store the 5 most printed words as the result
+	return finalVar;
+}
+
+int main(int argc, char *argv[])
+{
 
 
 
+
+
+
+
+
+}
 
 
 
