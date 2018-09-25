@@ -8,13 +8,30 @@ int main(int argc, char *argv[])
 {
 
 
+int fd[argc-1][2];
+char *wordBuffer = (char*)malloc(sizeof(char));
+char *myResult = (char*)malloc(sizeof(char));
+pid_t myProcessID;
+int a, b, c;
 
-//DECLARE VARS
-//CHECK FOR CORRECT FILENAME
-//FORK CHILD TO ARG
-//SEND FILE'S 5 WORDS TO PARENT
-//PRINT PARENT
-
+// Check if user has inputed correct amount of arguments
+if (argc < 2)
+{
+		fprintf(stderr, "my Apologies, there seems to have been an error in your filename. please try again.", argv[1]);
+		exit(0);
+}
+else{
+	for()
+	{
+		
+		
+		
+		
+		
+	}
+	
+	
+    }
 
 
 }
