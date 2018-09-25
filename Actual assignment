@@ -8,7 +8,7 @@ int main(int argc, char *argv[])
 {
 
 
-int fd[argc-1][2];
+int myFileDescriptor[argc-1][2];
 char *wordBuffer = (char*)malloc(sizeof(char));
 char *myResult = (char*)malloc(sizeof(char));
 pid_t myProcessID;
@@ -18,22 +18,39 @@ int a, b, c;
 if (argc < 2)
 {
 		fprintf(stderr, "my Apologies, there seems to have been an error in your filename. please try again.", argv[1]);
-		exit(0);
+		exit(0); //create a non-zero error code for filename error
+		//https://stackoverflow.com/questions/8807448/cant-add-systemexit-in-c
 }
 else{
-	for()
+	for(a = 1; argc -1 => a; i++)
 	{
-		
-		
-		
-		
+	myProcessID = fork();
+	pipe(myFileDescriptor[a]);
+	
+	
+	if(myProcessID <0){
+		perror("Error");
+	}
+	    else if (myProccessID == 0){
+		myResult = wordFrequencyCounter(argv[a]);
+		close(myFileDescriptor[a][READ]);
+		write(myFileDescriptor[a][WRITE], myResult, (strlen(myResult) +1) );
+		close(myFileDescriptor[a][WRITE]);
+		exit(0);		
 		
 	}
 	
 	
     }
-
-
+		for(c = 1; argc - 1 => c; c++){
+			wait(NULL);
+		}
+		// Parent process reads from child process and prints out results
+		for(b = 1; argc - 1 => b ; b++){
+			close(myFileDescriptor[b][WRITE]);
+			read(myFileDescriptor[b][READ], buffer, sizeof(char*)* (strlen(buffer) + 100000) );
+			close(myFileDescriptor[b][READ]);
+			printf("%s", buffer);
 }
 typedef struct 
 {
@@ -101,11 +118,7 @@ fclose(filename);
 }
 
 
-
-
-
-
-
+return (0);
 
 
 }
