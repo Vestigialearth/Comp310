@@ -1,55 +1,14 @@
 #include <stdio.h>
 #include <fcntl.h>
+#include <unistd.h>
 #include <string.h>
 #include <stdlib.h>
+#include <sys/wait.h>
+#include <sys/types.h>
 
+#define READ 0
+#define WRITE 1
 
-int main(int argc, char *argv[])
-{
-
-
-int myFileDescriptor[argc-1][2];
-char *wordBuffer = (char*)malloc(sizeof(char));
-char *myResult = (char*)malloc(sizeof(char));
-pid_t myProcessID;
-int a, b, c;
-
-// Check if user has inputed correct amount of arguments
-if (argc < 2)
-{
-	fprintf(stderr, "my Apologies, there seems to have been an error in your filename. please try again.", argv[1]);
-	exit(0); //create a non-zero error code for filename error
-}
-else{
-	for(a = 1; argc -1 => a; i++)
-	{
-	myProcessID = fork();
-	pipe(myFileDescriptor[a]);
-	
-	if(myProcessID <0){
-		perror("Error");
-	}
-	    else if (myProccessID == 0){
-		myResult = wordFrequencyCounter(argv[a]);
-		close(myFileDescriptor[a][READ]);
-		write(myFileDescriptor[a][WRITE], myResult, (strlen(myResult) +1) );
-		close(myFileDescriptor[a][WRITE]);
-		exit(0);		
-		
-	}
-	
-	
-    }
-		for(c = 1; argc - 1 => c; c++){
-			wait(NULL);
-		}
-		// Parent process reads from child process and prints out results
-		for(b = 1; argc - 1 => b ; b++){
-			close(myFileDescriptor[b][WRITE]);
-			read(myFileDescriptor[b][READ], buffer, sizeof(char*)* (strlen(buffer) + 100000) );
-			close(myFileDescriptor[b][READ]);
-			printf("%s", buffer);
-}
 typedef struct 
 {
 	char word[10000];
@@ -68,7 +27,7 @@ int wordComparison(const void *x1, const void *x2){
 char *wordFrequencyCounter(char *file){
   	int wordCounter = 0;
 	int uniqueCounter;
- 	char wordBuffer[10000]
+ 	char buffer[10000]
   	FILE *filename;
   
   filename = fopen(file, "r");
@@ -79,13 +38,14 @@ char *wordFrequencyCounter(char *file){
     }
   else
     {
-      while((fscanf(filename,%s",buffer)))
-    { isUnique = -1;
+      while((fscanf(filename,"%s",buffer)))
+    { 
+    isUnique = -1;
 
 //this compares strings
 int z;
 			
-for (z = 0; z < counter; z++){
+for (z = 0; z < wordCounter; z++){
 	if (strcmp(words[z].word, buffer) == 0)
 {
 	uniqueCounter = z;
@@ -94,9 +54,9 @@ for (z = 0; z < counter; z++){
 // If word is not already in array, place it there.
 if (uniqueCounter == -1)
 {
-	strcpy(words[myCount].word, buffer);
-	words[myCount].rate = 1;
-	myCount++;
+	strcpy(words[wordCounter].word, buffer);
+	words[wordCounter].rate = 1;
+	wordCounter++;
 }
 	// Increases rate var of word if it is found 
 	else {
@@ -106,18 +66,64 @@ if (uniqueCounter == -1)
 }	
 }
 //uses Qsort to take words out that appear the most frequently
-	qsort(words, myCount, sizeof(arrayStorage), wordComparison);
+	qsort(words, wordCounter, sizeof(arrayStorage), wordComparison);
 
 char *finalVar = (char*)malloc(sizeof(finalVar)*100);
-snprintf(result, 10000, "%s %d %s %s %s %s %s", file, myCount, words[0].word, words[1].word, words[2].word, words[3].word , words[4].word);
+snprintf(result, 10000, "%s %d %s %s %s %s %s", file, wordCounter, words[0].word, words[1].word, words[2].word, words[3].word , words[4].word);
 fclose(filename);
 //this should store the 5 most printed words as the result
 	return finalVar;
 }
 
 
-return (0);
+int main(int argc, char *argv[])
+{
 
+
+int myFileDescriptor[argc-1][2];
+char *buffer = (char*)malloc(sizeof(char));
+char *myResult = (char*)malloc(sizeof(char));
+pid_t myProcessID;
+int a, b, c;
+
+// Check if user has inputed correct amount of arguments
+if (argc < 2)
+{
+	fprintf(stderr, "my Apologies, there seems to have been an error in your filename. please try again.", argv[1]);
+	exit(0); //create a non-zero error code for filename error
+}
+else{
+	for(a = 1; a <= argc -1; i++)
+	{
+	myProcessID = fork();
+	pipe(myFileDescriptor[a]);
+	}
+	if(myProcessID <0){
+		perror("Error");
+	}
+	    else if (myProccessID == 0){
+		myResult = wordFrequencyCounter(argv[a]);
+		close(myFileDescriptor[a][READ]);
+		write(myFileDescriptor[a][WRITE], myResult, (strlen(myResult) +1) );
+		close(myFileDescriptor[a][WRITE]);
+		exit(0);		
+		
+	}
+	
+	
+    }
+		for(c = 1; c <= argc - 1; c++){
+			wait(NULL);
+		}
+		// Parent process reads from child process and prints out results
+		for(b = 1; b <= argc - 1 ; b++){
+			close(myFileDescriptor[b][WRITE]);
+			read(myFileDescriptor[b][READ], buffer, sizeof(char*)* (strlen(buffer) + 100000) );
+			close(myFileDescriptor[b][READ]);
+			printf("%s", buffer);
+		}
+}
+return (0);
 
 }
 // --LINKS I TOOK CODE FROM / WAS DIRECTLY INSPIRED BY--
