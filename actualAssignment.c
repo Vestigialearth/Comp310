@@ -11,10 +11,11 @@
 
 typedef struct 
 {
-	char word[10000];
-	int rate;
+  char word[10000];
+  int rate;
   
-} arrayStorage ;
+} 
+arrayStorage ;
 
 arrayStorage words[10000];
 
@@ -33,7 +34,7 @@ char *wordFrequencyCounter(char *filenameVar){
  	char buffer[10000];
   	
   
-  myFile = fopen(filenameVar, "r");
+        myFile = fopen(filenameVar, "r");
   
   if (myFile == NULL)
     {
@@ -46,33 +47,33 @@ char *wordFrequencyCounter(char *filenameVar){
     uniqueCounter = -1;
 
 //this compares strings
-int z;
+	int z;
 			
-for (z = 0; z < wordCounter; z++){
-	if (strcmp(words[z].word, buffer) == 0)
+	for (z = 0; z < wordCounter; z++){
+         if (strcmp(words[z].word, buffer) == 0)
 {
-	uniqueCounter = z;
+	  uniqueCounter = z;
 }
 }
 // If word is not already in array, place it there.
-if (uniqueCounter == -1)
+	 if (uniqueCounter == -1)
 {
-	strcpy(words[wordCounter].word, buffer);
-	words[wordCounter].rate = 1;
-	wordCounter++;
+	  strcpy(words[wordCounter].word, buffer);
+	  words[wordCounter].rate = 1;
+	  wordCounter++;
 }
 	// Increases rate var of word if it is found 
 	else {
-	words[uniqueCounter].rate++;
+	  words[uniqueCounter].rate++;
 	     }	
     }	
 }
 //uses Qsort to take words out that appear the most frequently
-	qsort(words, wordCounter, sizeof(arrayStorage), wordComparison);
+qsort(words, wordCounter, sizeof(arrayStorage), wordComparison);
 
-char *finalVar = (char*)malloc(sizeof(finalVar)*100);
-snprintf(finalVar, 10000, "%s %d %s %s %s %s %s", myFile, wordCounter, words[0].word, words[1].word, words[2].word, words[3].word , words[4].word);
-fclose(myFile);
+   char *finalVar = (char*)malloc(sizeof(finalVar)*100);
+   snprintf(finalVar, 10000, "%s %d %s %s %s %s %s", myFile, wordCounter, words[0].word, words[1].word, words[2].word, words[3].word , words[4].word);
+   fclose(myFile);
 //this should store the 5 most printed words as the result
 	return finalVar;
 }
@@ -82,30 +83,31 @@ int main(int argc, char *argv[])
 {
 
 
-int myFileDescriptor[argc-1][2];
-char *buffer = (char*)malloc(sizeof(char));
-char *myResult = (char*)malloc(sizeof(char));
-pid_t myProcessID;
-int a, b, c;
+	 int myFileDescriptor[argc-1][2];
+	 char *buffer = (char*)malloc(sizeof(char));
+ 	 char *myResult = (char*)malloc(sizeof(char));
+	 pid_t myProcessID;
+	 int a, b, c;
 
 // Check if user has inputed correct amount of arguments
-if (argc < 2)
+	if (argc < 2)
 {
 	fprintf(stderr, "my Apologies, there seems to have been an error in your filename. please try again.", argv[1]);
 	exit(0); //create a non-zero error code for filename error
 }
-else{
+else
+  {
 	for(a = 1; a <= argc -1; a++)
 	{
 	    pipe(myFileDescriptor[a]);
 	    myProcessID = fork();
 
 	
-	     if(myProcessID <0)
+	   if(myProcessID <0)
 	{
 		    perror("Error");
 	}
-	    else if (myProcessID == 0)
+	   else if (myProcessID == 0)
 	{
 		myResult = wordFrequencyCounter(argv[a]);
 		close(myFileDescriptor[a][READ]);
@@ -116,8 +118,8 @@ else{
 	}
 	
 	
-    }
-		for(c = 1; c <= argc - 1; c++)
+        }
+	    for(c = 1; c <= argc - 1; c++)
 		{
 			wait(NULL);
 		}
@@ -129,7 +131,7 @@ else{
 			close(myFileDescriptor[b][READ]);
 			printf("%s", buffer);
 		
-    	}
+  }
 }
 return(0);
 }
