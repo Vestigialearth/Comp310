@@ -133,3 +133,25 @@ else{
 }
 return(0);
 }
+
+// --LINKS I TOOK CODE FROM / WAS DIRECTLY INSPIRED BY--
+//https://www.w3resource.com/c-programming-exercises/string/c-string-exercise-31.php
+//This website taught me to how to parse a string (how i assume the text will be provided)
+ //https://www.geeksforgeeks.org/find-the-k-most-frequent-words-from-a-file/
+//This documents how to read a file, and store the most frequently used words into a variable "k"
+ //https://stackoverflow.com/questions/15508828/program-to-read-words-from-a-file-and-count-their-occurrence-in-the-file
+//This program reads the file and records all the words, as well as counting the occurrences in each word 
+ //https://github.com/sarracini/Word-Frequency-Counter/blob/master/rvw.c
+//This program reads an input file and count the frequency of words
+ //https://stackoverflow.com/questions/50240697/write-a-c-program-to-remove-the-occurrence-of-the-word-the-from-an-entered-str
+//This program reads an input sentence and removes the word "word" from a string -- this was 
+// modified to remove special chars
+ //https://stackoverflow.com/questions/18109458/read-from-a-text-file-and-parse-lines-into-words-in-c
+//also how to parse a text file
+ //-- USELESS LINKS-- 
+//https://www.tutorialspoint.com/c_standard_library/c_function_fclose.htm
+//fclose documentation
+//https://stackoverflow.com/questions/2423628/whats-the-difference-between-a-file-descriptor-and-file-pointer
+//why file descriptor was important to use instead of a file pointer (reading from file)
+ //https://stackoverflow.com/questions/8807448/cant-add-systemexit-in-c
+//helped with exit statement
